@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="ddeeb8c1-0a54-4e37-acf5-9633d060974a" 
+        solutionId="ddeeb8c1-0a54-4e37-acf5-9633d060974a" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="Lektion4_GetListJSOMEnum"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="6bba5e54-cc98-4095-be6c-f8f40c50c0d0" />
+  </features>
+</package>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="b82e5235-b048-4a92-b8f6-fd4e6830470a" 
+        solutionId="b82e5235-b048-4a92-b8f6-fd4e6830470a" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="Lektion4_Test"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="be12c158-d9b8-42cc-906c-336a93377d1f" />
+  </features>
+</package>

@@ -1,0 +1,29 @@
+﻿/* Place custom styles below */
+
+body {
+    background-color: lightskyblue;
+}
+
+#form {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.container {
+    width: 200px;
+    clear: both;
+}
+
+.container input {
+    width: 100%;
+    clear: both;
+}
+
+label {
+    display: inline-block;
+    text-align: right;
+}
