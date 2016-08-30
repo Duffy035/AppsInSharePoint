@@ -1,77 +1,85 @@
 ﻿'use strict';
 
-$(document).ready(function() {
 
-    var CompanyInfo = CompanyInfo || {};
-    CompanyInfo.Person = CompanyInfo.Person || {}
-    CompanyInfo.Car = CompanyInfo.Car || {}
+var CompanyInfo = CompanyInfo || {};
+CompanyInfo.Person = CompanyInfo.Person || {}
+CompanyInfo.Car = CompanyInfo.Car || {}
 
-    function Person(first, hasCar) {
-        this.firstName = first;
-        this.hasCar = hasCar;
-    }
+function Person(first, hasCar) {
+    this.firstName = first;
+    this.hasCar = hasCar;
+}
 
-    CompanyInfo.Person.PersonList = [
-        CompanyInfo.Person.newPerson = new Person("Calle", false),
-        CompanyInfo.Person.newPerson = new Person("Bengt", true),
-        CompanyInfo.Person.newPerson = new Person("Sara", false),
-        CompanyInfo.Person.newPerson = new Person("Petra", false)
-    ];
+CompanyInfo.Person.PersonList = [
+    CompanyInfo.Person.newPerson = new Person("Calle", false),
+    CompanyInfo.Person.newPerson = new Person("Bengt", true),
+    CompanyInfo.Person.newPerson = new Person("Sara", false),
+    CompanyInfo.Person.newPerson = new Person("Petra", true)
+];
 
-    CompanyInfo.Car.carsList = ["Audi", "Volvo", "Saab", "Peugeot", "Renault", "Fiat"];
+CompanyInfo.Car.carsList = ["Audi", "Volvo", "Saab", "Peugeot", "Renault", "Fiat"];
 
-    //funktion som skriver ut personer
-    function checkPersonList(list) {
-        var personToDisplay = "";
+//funktion som skriver ut personer
+CompanyInfo.displayList = function (list) {
 
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].hasCar === true) {
-                personToDisplay += list[i].firstName + "</br>";
-            }
+    var personToDisplay = "";
+
+    for (var i = 0; i < list.length; i++) {
+
+        if (list[i].hasCar === true) {
+            personToDisplay += list[i].firstName + "</br>";
         }
-        document.getElementById("showAllElements").innerHTML = personToDisplay;
     }
+    document.getElementById("showAllElements").innerHTML = personToDisplay;
+}
 
-    function checkEmployeeCarAccess(list) {
-        var defferd = $.Deferred();
-        var numberOfCars = 0;
+CompanyInfo.Car.PrintCars = function (list) {
 
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].hasCar === true) {
-                numberOfCars++;
-            } 
-        }
-        if (numberOfCars > 0) {
-            return defferd.resolve();
+    var carToDisplay = "";
+
+    for (var i = 0; i < list.length; i++) {
+        carToDisplay += list[i] + " ";
+    }
+    document.getElementById("showAllElements").innerHTML = carToDisplay;
+}
+
+CompanyInfo.Person.DoPersonHaveCar = function (list) {
+
+    var dfd = $.Deferred();
+
+    var numberOfCars = 0;
+
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].hasCar === true) {
+            numberOfCars++;
         } else {
-            return defferd.reject();
+            console.log("false");
         }
-        return defferd.promise();
+    } if (numberOfCars > 0) {
+
+        dfd.resolve();
+
+    } else {
+
+        dfd.reject();
     }
+    return dfd.promise();
 
-    function Caller() {
-        checkEmployeeCarAccess(CompanyInfo.Person.PersonList).then(function() {
-            return checkPersonList();
-        }, function () {
-            
-            console.log("hittades inga...");
-        });
-    
+}
 
-    var employeeButton = document.getElementById('Employee');
-        var carsButton = document.getElementById('Cars');
+CompanyInfo.Person.ViewEmployeeBtn = function () {
 
-        employeeButton.addEventListener('click', function() {
-            checkPersonList(CompanyInfo.Person.PersonList);
-            
-        });
-    }
-});
+    CompanyInfo.Person.DoPersonHaveCar(CompanyInfo.Person.PersonList).then(function () {
+        CompanyInfo.displayList(CompanyInfo.Person.PersonList);
+        console.log("One or more cars found");
+    },
+        function () {
+            document.getElementById("showAllElements").innerHTML = "No person with car found...";
+        }
+    ).always(function () { });
+}
 
-        //carsButton.addEventListener('click', function () {
-        //    var cars = document.getElementById('Cars');
+CompanyInfo.Car.ViewCarsBtn = function () {
+    CompanyInfo.Car.PrintCars(CompanyInfo.Car.carsList);
+}
 
-        //    alert(cars);
-        //});
-
-    //});

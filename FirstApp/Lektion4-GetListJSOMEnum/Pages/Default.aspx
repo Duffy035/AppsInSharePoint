@@ -32,8 +32,9 @@
             <!-- The following content will be replaced with the user name when you run the app - see App.js -->
             initializing...
         </p>
-        <button type="button" onclick="addListItem()">Get list</button>
-        <button type="button" onclick="editListItem()">Edit list</button>
+        <button type="button">Add list item</button>
+        <button type="button">Edit list item</button>
+        <button type="button">Take me to a new page</button>
     </div>
 
 </asp:Content>

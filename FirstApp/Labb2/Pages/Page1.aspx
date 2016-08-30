@@ -18,13 +18,14 @@
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
 
-<div class="container">
-        <button id="Employee">Get employees</button>
-        <button id="Cars">Get Cars</button>
-</div>
-    
-<div id="showAllElements"></div>
-<div id=""></div>
+    <div class="container">
+
+        <input type="button" id="ViewEmployeesBtn" value="Employee" name="submit" onclick="CompanyInfo.Person.ViewEmployeeBtn()"/>
+        <input type="button" id="ViewCarsBtn" value="Car" name="submit" onclick=" CompanyInfo.Car.ViewCarsBtn()" />
+
+    </div>
+
+    <div id="showAllElements"></div>
 
 </asp:Content>
 

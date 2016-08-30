@@ -39,7 +39,7 @@ ExecuteOrDelayUntilScriptLoaded(initializePage, "sp.js");
 function initializePage() {
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         var context = SP.ClientContext.get_current();
         var list = context.get_web().get_lists().getByTitle('DemoList3');
         context.load(list);
@@ -95,34 +95,42 @@ function initializePage() {
     //Lägga till list item med JSOM
     function addListItem() {
         //
+
         var hostWebUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
         var context = SP.ClientContext.get_current();
         var hostContext = new SP.AppContextSite(context, hostWebUrl);
 
-        var list2 = hostContext.get_web().get_lists().getByTitle('nyLista');
+        var list = hostContext.get_web().get_lists().getByTitle('DemoList3');
         var itemCreationInfo = new SP.ListItemCreationInformation();
-        var newListItem = list2.addItem(itemCreationInfo);
+        var newListItem = list.addItem(itemCreationInfo);
 
-        newListItem.set_item("Title", "Johan");
+        newListItem.set_item("Title", "Calle");
         //newListItem.set_item("Department", "Ekonomi");
 
-        context.load(newListItem);
-        context.executeQueryAsync(onCreateItemSuccess(), onCreateItemFail(), addListItem());
         newListItem.update();
+        context.load(newListItem);
+        context.executeQueryAsync(onCreateItemSuccess, onCreateItemFail);
         //
     }
+
+    document.addEventListener("click", function () {
+        addListItem();
+    });
 
     function onCreateItemSuccess() {
         document.getElementById("message").innerHTML = "Item created successfully!";
     }
 
-    function onCreateItemFail(sender, args) {
-        document.getElementById("message").innerHTML = "Failed to create item" + args.get_message();
+    //function onCreateItemFail(sender, args) {
+    //    document.getElementById("message").innerHTML = "Failed to create item" + args.get_message();
+    //}
+
+    function onCreateItemFail() {
+        document.getElementById("message").innerHTML = "Failed to create item";
     }
 
     function getQueryStringParameter(param) {
         var params = document.URL.split("?")[1].split("&");
-        //var strParams = "";
         for (var i = 0; i < params.length; i = i++) {
             var singleParam = params[i].split("=");
             if (singleParam[0] == param) {
@@ -137,22 +145,59 @@ function initializePage() {
         var listItem = "";
         while (listItemEnumerator.moveNext()) {
             var olistItem = listItemEnumerator.get_current();
-            listItem += '<li>' + listItemEnumerator.get_current() + '</li>';
+            listItem += "<li>" + listItemEnumerator.get_current() + "</li>";
 
-            if (olistItem.get_item("Title") === "Andreas") {
+            if (olistItem.get_item("Title") === "Calle") {
                 olistItem.set_item("Title", "Peter");
-                olistItem.update;
+                olistItem.update();
             }
         }
-        context.executeQueryAsync(onEditListItemSuccess(), onEditListItemFail(), editListItem());
+        context.executeQueryAsync(onEditListItemSuccess, onEditListItemFail);
     }
+
+    document.addEventListener("click", function () {
+        editListItem();
+    });
 
     function onEditListItemSuccess() {
         document.getElementById("message").innerHTML = "Item edited successfully!";
     }
 
-    function onEditListItemFail(sender, args) {
-        document.getElementById("message").innerHTML = "Failed to edit item" + args.get_message();
+    //function onEditListItemFail(sender, args) {
+    //    document.getElementById("message").innerHTML = "Failed to edit item" + args.get_message();
+
+    function onEditListItemFail() {
+        document.getElementById("message").innerHTML = "Failed to edit item";
+    }
+
+    //Redirect to new pae
+    function redirectToNewPage() {
+
+        var hostWebUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
+        var context = SP.ClientContext.get_current();
+        var hostContext = new SP.AppContextSite(context, hostWebUrl);
+
+        var list = hostContext.get_web().get_lists().getByTitle("DemoList3");
+        var rootFolder = list.get_rootFolder();
+
+        var listUrl = rootFolder.get_serverRelativeUrl();
+        GotoPage(listUrl, true);
+
+        context.load(rootFolder);
+        context.executeQueryAsync(onRedirectSuccess, onRedirectFail);
+
+    }
+
+    document.addEventListener("click", function () {
+        redirectToNewPage();
+    });
+
+    function onRedirectSuccess() {
+        document.getElementById("message").innerHTML = "Redirecting to new page";
+    }
+
+    function onRedirectFail() {
+        document.getElementById("message").innerHTML = "Redirect to new page failed";
     }
 
 }
