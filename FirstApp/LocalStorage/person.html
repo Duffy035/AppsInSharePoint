@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript">
+
+        var person = {};
+        person.arms = 2;
+        person.legs = 2;
+        person.eyes = 2;
+        person.mouth = 1;
+        perosn.sex = "man";
+        person.name = "Bart";
+
+        console.log(person);
+        localStorage.setItem("person", "person");
+
+        console.log(localStorage.getItem("person"));
+
+        if (localStorage.hits) {
+            localStorage.hits = Number(localStorage.hits) + 1;
+        } else {
+            localStorage.hits + 1;
+        }
+        document.write("Total Hits: " + localStorage.hits);
+        localStorage.setItem("person", JSON.stringify(person));
+        console.log(JSON.parse(localStorage.getItem("person")));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
