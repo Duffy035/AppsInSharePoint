@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="df80e0a5-65cc-4912-bf7a-5535037fea0e" 
+        solutionId="df80e0a5-65cc-4912-bf7a-5535037fea0e" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="AddListItem"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="ea761d81-06dd-4188-b4bc-a4b781c3869f" />
+  </features>
+</package>

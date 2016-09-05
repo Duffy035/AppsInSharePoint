@@ -6,10 +6,5 @@
     <File Path="Scripts\jquery-1.9.1.min.js" Url="Scripts/jquery-1.9.1.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-1.9.1.js" Url="Scripts/jquery-1.9.1.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-1.9.1.intellisense.js" Url="Scripts/jquery-1.9.1.intellisense.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\SP.Core.js" Url="Scripts/SP.Core.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\SP.js" Url="Scripts/SP.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\SP.Runtime.js" Url="Scripts/SP.Runtime.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\SP.UI.Dialog.js" Url="Scripts/SP.UI.Dialog.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\GetListItemsEx.js" Url="Scripts/GetListItemsEx.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
