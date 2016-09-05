@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="../Content/App.css" />
     <link href="../Content/App.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <script type="text/javascript" src="../Scripts/Labb2.js"></script>
 
@@ -20,12 +21,13 @@
 
     <div class="container">
 
-        <input type="button" id="ViewEmployeesBtn" value="Employee" name="submit" onclick="CompanyInfo.Person.ViewEmployeeBtn()"/>
-        <input type="button" id="ViewCarsBtn" value="Car" name="submit" onclick=" CompanyInfo.Car.ViewCarsBtn()" />
+        <input type="button" class="btn btn-primary" id="ViewEmployeesBtn" value="Employee" name="submit" onclick="CompanyInfo.Person.ViewEmployeeBtn()" />
+        <input type="button" class="btn btn-primary" id="ViewCarsBtn" value="Car" name="submit" onclick=" CompanyInfo.Car.ViewCarsBtn()" /><br/>
+
+        <div class="row" id="showAllElements">
+        </div>
 
     </div>
-
-    <div id="showAllElements"></div>
 
 </asp:Content>
 

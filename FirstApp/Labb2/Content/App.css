@@ -1,1 +1,31 @@
 ﻿/* Place custom styles below */
+
+
+#ViewEmployeesBtn {
+    /*float: left;*/
+    border-color: black;
+    font-size: 24px;
+    color: beige;
+    background-color: skyblue;
+    box-shadow: 2px 2px darkgray;
+}
+
+#ViewCarsBtn {
+    /*float: left;*/
+    border-color: black;
+    font-size: 24px;
+    color: beige;
+    background-color: skyblue;
+    box-shadow: 2px 2px darkgray;
+}
+
+#showAllElements {
+    font-size: 18px;
+    float: left;
+
+}
+
+.container {
+    padding-top: 20px;
+
+}

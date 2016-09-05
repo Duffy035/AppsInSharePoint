@@ -38,7 +38,7 @@ CompanyInfo.Car.PrintCars = function (list) {
     var carToDisplay = "";
 
     for (var i = 0; i < list.length; i++) {
-        carToDisplay += list[i] + " ";
+        carToDisplay += list[i] + " " + "</br>";
     }
     document.getElementById("showAllElements").innerHTML = carToDisplay;
 }
